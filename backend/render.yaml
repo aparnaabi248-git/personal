@@ -1,0 +1,22 @@
+# Render blueprint for the Personal Finance API.
+#
+# The SQLite file must live on a persistent disk, otherwise every deploy starts
+# from an empty database. A disk is a paid add-on; without one this service is
+# fine for demos but loses all data on each release.
+services:
+  - type: web
+    name: personal-finance-api
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    disk:
+      name: finance-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: DATABASE_FILE
+        value: /data/finance.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production

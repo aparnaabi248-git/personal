@@ -1,0 +1,13 @@
+node_modules
+data
+test
+.git
+.gitignore
+.env
+.env.*
+*.md
+Dockerfile
+.dockerignore
+render.yaml
+fly.toml
+npm-debug.log
